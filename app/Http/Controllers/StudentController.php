@@ -27,12 +27,40 @@ public function store(Request $request)
         'fee' => 'required',
 
     ]);
+
+    Student::create($request->all());
+
+    return redirect()->route('students.index')
+        ->with('success', 'Added successfully');
 }
 
 public function show (Student $student)
 {
-
+    return view('students.show',compact('student'));
 }
 
+public function edit(Student $student)
+{
+    return view('students.edit', compact('student'));
+}
 
+public function update(Request $request, Student $student)
+{
+    $request->validate([
+
+    ]);
+
+    $student->update($request->all());
+
+    return redirect()->route('students.index')
+        ->with('success','Updated');
+}
+
+public function destroy(Student $student)
+{
+    $student->delete();
+
+    return redirect()->route('students.index')
+        ->with('success','Deleted');
+}
 }

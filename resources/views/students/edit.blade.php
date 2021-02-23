@@ -23,4 +23,31 @@
     <form action="{{ route('students.update', $student->id) }}" method="POST">
     @csrf 
     @method('PUT')
-            
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>StudentName:</strong>
+                    <input type="text" name="studentname" value="{{ $student->studentname }}" class="form-control" placeholder="studentname">
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Course</strong>
+                    <input type="text" name="course" value="{{ $student->course }}"class="form-control" placeholder="course">
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Fee</strong>
+                    <input type="number" name="fee" value="{{ $student->fee }}" class="form-control" placeholder="fee">
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+@endsection
