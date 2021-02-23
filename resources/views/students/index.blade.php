@@ -1,15 +1,15 @@
 @extends('students.layout')
 
 @section('content')
-<div class="pull-left">
+<div class="card text-center">
+  <div class="card-header">
     <h2>Student Record</h2>
 </div>
 
 <div class="row">
     <div class="col-lg-12 margin-tb">
-
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('students.create') }}">Add New Record</a>
+            <a class="btn btn-success text-center" href="{{ route('students.create') }}">Add New Record</a>
         </div>
 
     </div>
@@ -50,6 +50,6 @@
     </tr>
     @endforeach
 </table>
-
+</div>
 
 
