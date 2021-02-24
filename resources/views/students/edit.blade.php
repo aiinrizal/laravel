@@ -27,7 +27,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>StudentName:</strong>
-                    <input type="text" name="studentname" value="{{ $student->studentname }}" class="form-control" placeholder="studentname">
+                    <input type="text" name="name" value="{{ $student->name }}" class="form-control" placeholder="name">
                 </div>
             </div>
 

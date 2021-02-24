@@ -1,9 +1,15 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use PhpOffice\PhpWord\Shared\ZipArchive;
+use PhpOffice\PhpWord\TemplateProcessor;
+//use PhpOffice\PHPWord\TemplateProcessor;
+//require_once 'vendor/autoload.php';
+//$templateProcessor = new \PhpOffice\PhpWord\templateProcessor();
 
 class StudentController extends Controller
 {
@@ -22,11 +28,18 @@ public function create()
 public function store(Request $request)
 {
     $request->validate([
-        'studentname' => 'required',
+        'name' => 'required',
         'course' => 'required',
         'fee' => 'required',
 
     ]);
+
+    header("Content-type: application/vnd.ms-word");  
+    header("Content-Disposition: attachment;Filename=".rand().".doc");  
+    header("Pragma: no-cache");  
+    header("Expires: 0");  
+    echo '<h1>'.$_POST["student"].'</h1>';  
+    echo $_POST["student"];
 
     Student::create($request->all());
 
@@ -34,9 +47,10 @@ public function store(Request $request)
         ->with('success', 'Added successfully');
 }
 
-public function show (Student $student)
+public function show ($id)
 {
-    return view('students.show',compact('student'));
+    $student = Student::findOrFail($id);
+    return view('students.show', compact('student'));
 }
 
 public function edit(Student $student)
@@ -63,4 +77,21 @@ public function destroy(Student $student)
     return redirect()->route('students.index')
         ->with('success','Deleted');
 }
+
+public function wordExport($id)
+{
+    $student = Student::findOrFail($id);
+    $templateProcessor = new TemplateProcessor('/Applications/MAMP/htdocs/startup/public/word-template/student.docx');
+    $templateProcessor->setValue('id', $student ->id);
+    $templateProcessor->setValue('name', $student ->name);
+    $templateProcessor->setValue('course', $student ->course);
+    $templateProcessor->setValue('fee', $student ->fee);
+    $fileName = $student->name;
+    $templateProcessor->saveAs( $fileName .'.docx');
+    return response()->download( $fileName .'.docx')->deleteFileAfterSend(true);
+
 }
+
+
+}
+ 

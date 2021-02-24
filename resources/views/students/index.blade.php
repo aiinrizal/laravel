@@ -21,7 +21,7 @@
     </div>
 @endif
 
-<table class="table table-bordered">
+<table class="table table-bordered mt-5">
     <tr>
         <th>No.</th>
         <th>Name</th>
@@ -33,7 +33,7 @@
     @foreach ($students as $student)
     <tr>
         <td>{{ ++$i }}</td>
-        <td>{{ $student->studentname }}</td>
+        <td>{{ $student->name }}</td>
         <td>{{ $student->course }}</td>
         <td>{{ $student->fee }}</td>
         <td>

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controller\StudentController;
+use PhpOffice\PhpWord\Shared\ZipArchive;
+use PhpOffice\PhpWord\TemplateProcessor;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,8 +20,10 @@ Route::get('/', function () {
 });
 
 Route::resource('students','App\Http\Controllers\StudentController');
-
+//Route::get(url: 'students', action: "students")
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/students/word-export/{id}','App\Http\Controllers\StudentController@wordExport');
