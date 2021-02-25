@@ -19,6 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('staff','/Applications/MAMP/htdocs/startup/app/Http/Controllers/UserController.php');
+
 Route::resource('students','App\Http\Controllers\StudentController');
 //Route::get(url: 'students', action: "students")
 
