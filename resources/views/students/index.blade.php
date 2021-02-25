@@ -1,6 +1,9 @@
 @extends('students.layout')
 
 @section('content')
+
+<div class="container">
+
 <div class="card text-center">
   <div class="card-header">
     <h2>Student Record</h2>
@@ -50,6 +53,7 @@
     </tr>
     @endforeach
 </table>
+</div>
 </div>
 
 
