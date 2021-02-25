@@ -1,7 +1,61 @@
 @extends('layouts.app')
 
 @section('content')
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+    $(':checkbox').change(function(){
+    if($(this).is(':checked'))
+    {
+        $(this).prev('input').attr('type','text');
+    }
+    else
+    {
+    $(this).prev('input').attr('type','password');
+    }
+        });
+    });
+</script>
+
 <div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="col-md-4" style="margin-top: 100px">
+                <form action="" method="POST">
+                    <h3 class=text-center>Daftar Masuk Pengguna</h3><br/>
+					<input type="text" class="form-control" placeholder="E-mail" name="email" autofill="off" />
+					<br>
+					<input type="password" class="form-control" id="test1" placeholder="Password" name="password" autofill="off" />
+					
+					<input id="test2" type="checkbox"/>Show password
+					<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>	
+					
+					<br>
+					<br>
+
+					<div class="col-md-12 text-center">
+					
+						<button class="btn btn-block btn-success">
+							<span class="fa fa-send"></span> Login
+						</button>
+					</div>
+					<br/>
+				</form>
+                    <div class="col-md-12 text-center">
+                        <a href="register" class="">Register</a>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -69,5 +123,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+
+
 @endsection
